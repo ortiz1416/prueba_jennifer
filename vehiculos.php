@@ -1,15 +1,15 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "campeonato");
+$conexion = mysqli_connect("localhost", "root", "", "vehiculos");
 
-$tip_deport = $_POST['id_tip_deporte'];
+$marca = $_POST['id_tip_marca'];
 
-$sql="SELECT deporte.id_deporte, deporte.deporte FROM tipo_deporte INNER JOIN deporte ON tipo_deporte.id_tip_deporte = deporte.id_tip_deporte
-AND tipo_deporte.id_tip_deporte = '$tip_deport'";
+$sql="SELECT prestamo.id_destino, destino.destino FROM marca INNER JOIN destino ON marca.id_tip_marca = destino.id_tip_marca
+AND marca.id_tip_marca= '$marca'";
 
 $result = mysqli_query($conexion, $sql);
-$cadena = "<label>deporte</label>";
+$cadena = "<label>vehiculo</label>";
 while ($ver = mysqli_fetch_assoc($result)) {
-    $cadena .= '<option value=' . $ver['id_deporte'] . '>' . $ver['deporte'] . '</option>';
+    $cadena .= '<option value=' . $ver['id_destino'] . '>' . $ver['destino'] . '</option>';
 }
 echo $cadena . "</select>";
 
