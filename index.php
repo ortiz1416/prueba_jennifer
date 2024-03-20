@@ -22,9 +22,7 @@
     <div class="text-center">
     <div class="row mt-3">
         <div class="col-md-6">
-            <form action="../index.php">
-                <input type="submit" value="Regresar" class="btn btn-secondary"/>
-            </form>
+            
         </div>
         
     </div>
@@ -42,7 +40,7 @@
         <tbody>
 
             <?php
-            $consulta = "SELECT * FROM prestamo, destino, marca WHERE prestamo.id_destino = marca.id_destino AND marca.id_tip_marca = destino.id_tip_marca";
+            $consulta = "SELECT * FROM prestamo, marca, destino WHERE prestamo.id_destino = destino.id_destino AND destino.id_tip_marca = marca.id_tip_marca";
             $resultado = $con->query($consulta);
 
             while ($fila = $resultado->fetch()) {
